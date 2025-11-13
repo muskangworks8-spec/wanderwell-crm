@@ -64,6 +64,7 @@ export type Database = {
           assigned_to: string | null
           budget_max: number | null
           budget_min: number | null
+          campaign: string | null
           check_in_date: string | null
           check_out_date: string | null
           created_at: string | null
@@ -83,6 +84,7 @@ export type Database = {
           assigned_to?: string | null
           budget_max?: number | null
           budget_min?: number | null
+          campaign?: string | null
           check_in_date?: string | null
           check_out_date?: string | null
           created_at?: string | null
@@ -102,6 +104,7 @@ export type Database = {
           assigned_to?: string | null
           budget_max?: number | null
           budget_min?: number | null
+          campaign?: string | null
           check_in_date?: string | null
           check_out_date?: string | null
           created_at?: string | null
@@ -130,6 +133,44 @@ export type Database = {
             columns: ["created_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notifications: {
+        Row: {
+          created_at: string | null
+          id: string
+          lead_id: string | null
+          message: string
+          read: boolean | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          lead_id?: string | null
+          message: string
+          read?: boolean | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          lead_id?: string | null
+          message?: string
+          read?: boolean | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
             referencedColumns: ["id"]
           },
         ]
@@ -246,6 +287,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_next_agent: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
