@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Leads from "./pages/Leads";
+import LeadDetails from "./pages/LeadDetails";
 import Pipeline from "./pages/Pipeline";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/leads" element={<Leads />} />
+          <Route path="/leads/:id" element={<LeadDetails />} />
           <Route path="/pipeline" element={<Pipeline />} />
           <Route path="/settings" element={<Settings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
